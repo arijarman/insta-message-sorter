@@ -1,9 +1,5 @@
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
-# I just made it for myself by chatgpt to convert insta generated chat 
-# to revert it message orders and make the timezone to IST 
-# Change "senorita" name to your Receiver's namen 
-# and "white flower" to your name
 
 # Function to adjust the timezone from Alaska to IST
 def convert_to_ist(alaska_time_str):
@@ -45,7 +41,7 @@ def parse_html_files(file_paths):
     return messages
 
 # Generate love-themed HTML content
-def generate_html(messages):
+def generate_html(messages, left_sender, right_sender):
     html_content = """
     <!DOCTYPE html>
     <html lang="en">
@@ -75,18 +71,18 @@ def generate_html(messages):
                 max-width: 100%; /* Ensure messages do not exceed container width */
                 box-sizing: border-box; /* Include padding and border in width calculation */
             }
-            .sender-white-flower { /* Swapped color for white flower */
-                background-color: #fff5e1; 
-                color: #b35a00; 
-                text-align: right; 
-                float: right; /* Align to the right */
-                clear: both;
-            }
-            .sender-senorita { /* Swapped color for senorita */
+            .left-sender { 
                 background-color: #d3e5ff; 
                 color: #0056b3; 
                 text-align: left; 
                 float: left; /* Align to the left */
+                clear: both;
+            }
+            .right-sender { 
+                background-color: #fff5e1; 
+                color: #b35a00; 
+                text-align: right; 
+                float: right; /* Align to the right */
                 clear: both;
             }
             .time { 
@@ -110,8 +106,8 @@ def generate_html(messages):
     """
 
     for message in messages:
-        # Swap colors for sender and receiver
-        sender_class = "sender-white-flower" if message['sender'] == "white flower" else "sender-senorita"
+        # Dynamically assign the CSS class based on the user input
+        sender_class = "left-sender" if message['sender'] == left_sender else "right-sender"
         
         html_content += f"""
         <div class="message {sender_class}">
@@ -146,8 +142,24 @@ if __name__ == "__main__":
     # Extract and parse the messages
     all_messages = parse_html_files(files)
 
+    # Get unique senders from messages
+    unique_senders = list(set([msg['sender'] for msg in all_messages]))
+
+    # Display senders to the user for input
+    print("Detected senders:")
+    for i, sender in enumerate(unique_senders):
+        print(f"{i + 1}. {sender}")
+
+    # Ask the user who should be on the left
+    left_choice = int(input(f"Choose the number for the sender to display on the left side: ")) - 1
+
+    left_sender = unique_senders[left_choice]
+    right_sender = [sender for sender in unique_senders if sender != left_sender][0]
+
+    print(f"{left_sender} will be on the left side and {right_sender} will be on the right side.")
+
     # Generate the new HTML with love theme
-    final_html_content = generate_html(all_messages)
+    final_html_content = generate_html(all_messages, left_sender, right_sender)
 
     # Save the HTML content to a new file
     with open('love_theme_chat.html', 'w', encoding='utf-8') as output_file:
