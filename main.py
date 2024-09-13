@@ -2,8 +2,8 @@ from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 # I just made it for myself by chatgpt to convert insta generated chat 
 # to revert it message orders and make the timezone to IST 
-# Change jasmin name to your Receiver's namen 
-# and White Flower to your name
+# Change "senorita" name to your Receiver's namen 
+# and "sam" to your name
 
 # Function to adjust the timezone from Alaska to IST
 def convert_to_ist(alaska_time_str):
@@ -75,14 +75,14 @@ def generate_html(messages):
                 max-width: 100%; /* Ensure messages do not exceed container width */
                 box-sizing: border-box; /* Include padding and border in width calculation */
             }
-            .sender-white-flower { /* Swapped color for White Flower */
+            .sender-white-flower { /* Swapped color for sam */
                 background-color: #fff5e1; 
                 color: #b35a00; 
                 text-align: right; 
                 float: right; /* Align to the right */
                 clear: both;
             }
-            .sender-jasmin { /* Swapped color for Jasmin */
+            .sender-senorita { /* Swapped color for senorita */
                 background-color: #d3e5ff; 
                 color: #0056b3; 
                 text-align: left; 
@@ -111,7 +111,7 @@ def generate_html(messages):
 
     for message in messages:
         # Swap colors for sender and receiver
-        sender_class = "sender-white-flower" if message['sender'] == "White Flower 🌸" else "sender-jasmin"
+        sender_class = "sender-white-flower" if message['sender'] == "sam" else "sender-senorita"
         
         html_content += f"""
         <div class="message {sender_class}">
