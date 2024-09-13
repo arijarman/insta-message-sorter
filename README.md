@@ -23,10 +23,10 @@ You need Git to clone the repository. Follow the instructions below based on you
 <details>
   <summary><strong>Ubuntu/Debian/Linux Mint</strong></summary>
 
-  \```bash
+  \bash
   sudo apt update
   sudo apt install git
-  \```
+  \
 </details>
 
 <details>
