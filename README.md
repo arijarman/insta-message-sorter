@@ -1,4 +1,4 @@
-```markdown
+\```markdown
 # Insta Message Sorter 📨
 
 A tool to reverse and beautify your Instagram chat history HTML files! This project transforms the plain, server-time-stamped Instagram `messages.html` file into a user-friendly, chat-themed format that sorts messages from top to bottom and converts the timezone from Alaska to your local time.
@@ -23,10 +23,10 @@ You need Git to clone the repository. Follow the instructions below based on you
 <details>
   <summary><strong>Ubuntu/Debian/Linux Mint</strong></summary>
 
-  bash
+  \```bash
   sudo apt update
   sudo apt install git
-  
+  \```
 </details>
 
 <details>
@@ -40,25 +40,25 @@ You need Git to clone the repository. Follow the instructions below based on you
 <details>
   <summary><strong>Red Hat/Fedora</strong></summary>
 
-  bash
+  \bash
   sudo dnf install git
-  
+  \
 </details>
 
 <details>
   <summary><strong>openSUSE</strong></summary>
 
-  bash
+  \```bash
   sudo zypper install git
-  
+  \```
 </details>
 
 <details>
   <summary><strong>macOS</strong></summary>
 
-  bash
+  \```bash
   brew install git
-  
+  \```
 </details>
 
 <details>
@@ -70,23 +70,26 @@ You need Git to clone the repository. Follow the instructions below based on you
 
 ### 2. Clone the Repository and Run the Script
 
-bash
+\```bash
 git clone https://github.com/arijarman/insta-message-sorter
 cd insta-message-sorter
+\```
 
 ### 3. Install Required Python Packages
 
 Ensure you have `BeautifulSoup` installed:
 
-bash
+\```bash
 pip install beautifulsoup4
+\```
 
 ### 4. Run the Script
 
 Make sure to keep the `messages.html` file in the same directory as `main.py`:
 
-bash
+\```bash
 python main.py
+\```
 
 ### 📥 Alternative Method: Manual Download
 
@@ -136,3 +139,4 @@ This project was brought to life with the help of ChatGPT, which assisted in gen
 ---
 
 Happy Sorting! ✨
+\```
