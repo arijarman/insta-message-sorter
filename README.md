@@ -1,42 +1,40 @@
-# Insta Message Sorter
+# Insta Message Sorter 📨
 
-Insta Message Sorter is a Python tool that processes and formats Instagram chat history. It enhances the readability and usability of your chat data by organizing messages, adjusting time zones, and creating a visually appealing HTML file.
+A tool to reverse and beautify your Instagram chat history HTML files! This project transforms the plain, server-time-stamped Instagram `messages.html` file into a user-friendly, chat-themed format that sorts messages from top to bottom and converts the timezone from Alaska to your local time.
 
-## Features
+---
 
-- **Reorder Messages**: Automatically reorders messages from newest to oldest for a more intuitive reading experience.
-- **Chat Bubbles**: Adds chat bubbles around messages for a familiar chat-like appearance.
-- **Timezone Adjustment**: Converts message timestamps from Alaska's server time to your local timezone for accurate chronological order.
-- **HTML Merging**: Combines multiple `messages.html` files into a single, sorted HTML file, streamlining the chat history into one cohesive document.
-- **Top-to-Bottom Reading**: Formats the final HTML so that messages are read from top to bottom, contrary to the original bottom-to-top format.
-- **Customizable Output**: Easily modify the script to adjust the appearance or sorting rules according to your needs.
-- **User-Friendly**: Simple command-line interface and minimal setup requirements make it easy to use.
+## 📜 Features
 
-## Installation
+- **Reverse Message Order**: Automatically sorts messages from "oldest to newest," making it easier to read.
+- **Chat Bubble Styling**: Converts plain HTML into a chat-bubble style format for enhanced readability.
+- **Timezone Conversion**: Changes the timezone from Alaska Time to your local timezone.
+- **Merge Multiple Files**: Merges all `messages.html` files into a single, sorted, and edited chat-themed HTML.
 
-### Method 1: Using Git and Python
+## 🚀 Installation Guide
 
-1. **Install Git**:
-   - **Ubuntu/Debian/Linux Mint**:
-     ```bash
-     sudo apt update
-     sudo apt install git
-     ```
-   - **Arch/Manjaro**:
-     ```bash
-     sudo pacman -S git
-     ```
-   - **RedHat/Fedora/OpenSUSE**:
-     ```bash
-     sudo dnf install git
-     ```
-   - **macOS**:
-     ```bash
-     brew install git
-     ```
-   - **Windows**:
-     Download and install Git from [git-scm.com](https://git-scm.com/download/win).
+Follow these steps to set up the project on your local machine.
 
-2. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/arijarman/insta-message-sorter
+### 1. Install Git
+
+You need Git to clone the repository. Follow the instructions below based on your operating system.
+
+<details>
+  <summary><strong>Ubuntu/Debian/Linux Mint</strong></summary>
+
+  ```bash
+  sudo apt update
+  sudo apt install git
+</details> <details> <summary><strong>Arch/Manjaro</strong></summary>
+sudo pacman -S git
+</details> <details> <summary><strong>Red Hat/Fedora</strong></summary>
+sudo dnf install git
+</details> <details> <summary><strong>openSUSE</strong></summary>
+sudo zypper install git
+</details> <details> <summary><strong>macOS</strong></summary>
+brew install git
+
+</details> <details> <summary><strong>Windows</strong></summary>
+Download and install Git from the official website.
+
+</details>
