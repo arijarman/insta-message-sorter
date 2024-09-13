@@ -32,7 +32,7 @@ You need Git to clone the repository. Follow the instructions below based on you
 <details>
   <summary><strong>Arch/Manjaro</strong></summary>
 
-  bash
+  ```bash
   sudo pacman -S git
   
 </details>
@@ -40,7 +40,7 @@ You need Git to clone the repository. Follow the instructions below based on you
 <details>
   <summary><strong>Red Hat/Fedora</strong></summary>
 
-  bash
+  ```bash
   sudo dnf install git
   
 </details>
