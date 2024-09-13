@@ -1,5 +1,9 @@
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
+# I just made it for myself by chatgpt to convert insta generated chat 
+# to revert it message orders and make the timezone to IST 
+# Change jasmin name to your Receiver's namen 
+# and White Flower to your name
 
 # Function to adjust the timezone from Alaska to IST
 def convert_to_ist(alaska_time_str):
@@ -50,16 +54,55 @@ def generate_html(messages):
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Love Themed Instagram Chat</title>
         <style>
-            body { font-family: Arial, sans-serif; background-color: #f2f2f2; padding: 20px; }
-            .chat-container { max-width: 600px; margin: auto; }
-            .message { margin: 10px 0; padding: 10px; border-radius: 15px; width: fit-content; }
-            .sender-jasmin { background-color: #d3e5ff; color: #0056b3; text-align: left; }
-            .sender-white-flower { background-color: #fff5e1; color: #b35a00; text-align: right; }
-            .time { font-size: 10px; color: gray; }
-            .reaction { margin-top: 5px; font-size: 12px; color: #888; }
-            .chat-right { float: right; clear: both; }
-            .chat-left { float: left; clear: both; }
-            .image, .video { max-width: 100%; margin-top: 5px; }
+            body { 
+                font-family: Arial, sans-serif; 
+                background-color: #f2f2f2; 
+                padding: 20px; 
+                margin: 0; 
+                overflow-x: hidden; /* Prevent horizontal scrolling */
+            }
+            .chat-container { 
+                max-width: 600px; 
+                margin: auto; 
+                overflow-wrap: break-word; /* Break long words to prevent overflow */
+                word-wrap: break-word;
+            }
+            .message { 
+                margin: 10px 0; 
+                padding: 10px; 
+                border-radius: 15px; 
+                width: fit-content; 
+                max-width: 100%; /* Ensure messages do not exceed container width */
+                box-sizing: border-box; /* Include padding and border in width calculation */
+            }
+            .sender-white-flower { /* Swapped color for White Flower */
+                background-color: #fff5e1; 
+                color: #b35a00; 
+                text-align: right; 
+                float: right; /* Align to the right */
+                clear: both;
+            }
+            .sender-jasmin { /* Swapped color for Jasmin */
+                background-color: #d3e5ff; 
+                color: #0056b3; 
+                text-align: left; 
+                float: left; /* Align to the left */
+                clear: both;
+            }
+            .time { 
+                font-size: 10px; 
+                color: gray; 
+            }
+            .reaction { 
+                margin-top: 5px; 
+                font-size: 12px; 
+                color: #888; 
+            }
+            .image, .video { 
+                max-width: 100%; /* Ensure images and videos fit within the message bubble */
+                height: auto; 
+                margin-top: 5px; 
+            }
         </style>
     </head>
     <body>
@@ -67,11 +110,11 @@ def generate_html(messages):
     """
 
     for message in messages:
-        sender_class = "sender-jasmin" if message['sender'] == "Jasmin Sarkar" else "sender-white-flower"
-        alignment = "chat-left" if sender_class == "sender-jasmin" else "chat-right"
+        # Swap colors for sender and receiver
+        sender_class = "sender-white-flower" if message['sender'] == "White Flower 🌸" else "sender-jasmin"
         
         html_content += f"""
-        <div class="message {sender_class} {alignment}">
+        <div class="message {sender_class}">
             <strong>{message['sender']}</strong><br>
             {message['message']}<br>
             <span class="time">{message['timestamp']}</span>
