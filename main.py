@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 # I just made it for myself by chatgpt to convert insta generated chat 
 # to revert it message orders and make the timezone to IST 
 # Change "senorita" name to your Receiver's namen 
-# and "sam" to your name
+# and "white flower" to your name
 
 # Function to adjust the timezone from Alaska to IST
 def convert_to_ist(alaska_time_str):
@@ -75,7 +75,7 @@ def generate_html(messages):
                 max-width: 100%; /* Ensure messages do not exceed container width */
                 box-sizing: border-box; /* Include padding and border in width calculation */
             }
-            .sender-white-flower { /* Swapped color for sam */
+            .sender-white-flower { /* Swapped color for white flower */
                 background-color: #fff5e1; 
                 color: #b35a00; 
                 text-align: right; 
@@ -111,7 +111,7 @@ def generate_html(messages):
 
     for message in messages:
         # Swap colors for sender and receiver
-        sender_class = "sender-white-flower" if message['sender'] == "sam" else "sender-senorita"
+        sender_class = "sender-white-flower" if message['sender'] == "white flower" else "sender-senorita"
         
         html_content += f"""
         <div class="message {sender_class}">
