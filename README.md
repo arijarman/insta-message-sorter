@@ -1,4 +1,4 @@
-\```markdown
+
 # Insta Message Sorter 📨
 
 A tool to reverse and beautify your Instagram chat history HTML files! This project transforms the plain, server-time-stamped Instagram `messages.html` file into a user-friendly, chat-themed format that sorts messages from top to bottom and converts the timezone from Alaska to your local time.
@@ -139,4 +139,4 @@ This project was brought to life with the help of ChatGPT, which assisted in gen
 ---
 
 Happy Sorting! ✨
-\```
+
