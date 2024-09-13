@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
+import os
 
 # Function to adjust the timezone from Alaska to IST
 def convert_to_ist(alaska_time_str):
@@ -16,17 +17,20 @@ def parse_html_files(file_paths):
             soup = BeautifulSoup(file, 'html.parser')
             message_divs = soup.find_all('div', class_='pam _3-95 _2ph- _a6-g uiBoxWhite noborder')
 
+            # Find base URL to resolve relative paths
+            base_url = soup.find('base')['href'] if soup.find('base') else ''
+
             for div in message_divs:
                 sender = div.find('div', class_='_3-95 _2pim _a6-h _a6-i').text.strip()
                 message = div.find('div', class_='_3-95 _a6-p').text.strip()
                 timestamp = div.find('div', class_='_3-94 _a6-o').text.strip()
-                
+
                 # Convert the time to IST
                 timestamp_ist = convert_to_ist(timestamp)
 
                 # Check for images and videos
-                images = [img['src'] for img in div.find_all('img')]
-                videos = [video['src'] for video in div.find_all('video')]
+                images = [base_url + img['src'] for img in div.find_all('img')]
+                videos = [base_url + video['src'] for video in div.find_all('video')]
 
                 messages.append({
                     'sender': sender,
