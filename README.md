@@ -11,8 +11,7 @@ A tool to reverse and beautify your Instagram chat history HTML files! This proj
 - **Chat Bubble Styling**: Converts plain HTML into a chat-bubble style format for enhanced readability.
 - **Timezone Conversion**: Changes the timezone from Alaska Time to your local timezone.
 - **Merge Multiple Files**: Merges all `messages.html` files into a single, sorted, and edited chat-themed HTML.
-- **Breaking Large HTML**: This tool has also ability to break htmls into multiple HTMLs.[Link of Parting HTML](https://github.com/arijarman/insta-message-sorter/blob/main/parting_html.py)
-
+- **Breaking Large HTML**: This tool has also ability to break large HTML into multiple HTMLs.
 ## 🚀 Installation Guide
 
 Follow these steps to set up the project on your local machine.
@@ -78,11 +77,11 @@ You need Git to clone the repository. Follow the instructions below based on you
 
 ### 3. Install Required Python Packages
 
-Ensure you have `BeautifulSoup` installed:
+Ensure you have `BeautifulSoup` & `python-dateutil` installed:
 
 
 **pip install beautifulsoup4**
-
+**pip install python-dateutil**
 
 ### 4. Run the Script
 
@@ -90,8 +89,6 @@ Make sure to keep the `messages.html` file in the same directory as `main.py`:
 
 
 **python main.py**
-or
-**python parting_html.py**
 
 
 ### 📥 Alternative Method: Manual Download
