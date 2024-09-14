@@ -11,6 +11,7 @@ A tool to reverse and beautify your Instagram chat history HTML files! This proj
 - **Chat Bubble Styling**: Converts plain HTML into a chat-bubble style format for enhanced readability.
 - **Timezone Conversion**: Changes the timezone from Alaska Time to your local timezone.
 - **Merge Multiple Files**: Merges all `messages.html` files into a single, sorted, and edited chat-themed HTML.
+- **Breaking Large HTML**: This tool has also ability to break htmls into multiple HTMLs.[Link of Parting HTML](https://github.com/arijarman/insta-message-sorter/blob/main/parting_html.py)
 
 ## 🚀 Installation Guide
 
@@ -24,8 +25,8 @@ You need Git to clone the repository. Follow the instructions below based on you
   <summary><strong>Ubuntu/Debian/Linux Mint</strong></summary>
 
   bash
-  sudo apt update
-  sudo apt install git
+  **sudo apt update**
+  **sudo apt install git**
   
 </details>
 
@@ -33,7 +34,7 @@ You need Git to clone the repository. Follow the instructions below based on you
   <summary><strong>Arch/Manjaro</strong></summary>
 
   bash
-  sudo pacman -S git
+  **sudo pacman -S git**
   
 </details>
 
@@ -41,7 +42,7 @@ You need Git to clone the repository. Follow the instructions below based on you
   <summary><strong>Red Hat/Fedora</strong></summary>
 
   bash
-  sudo dnf install git
+  **sudo dnf install git**
   
 </details>
 
@@ -49,7 +50,7 @@ You need Git to clone the repository. Follow the instructions below based on you
   <summary><strong>openSUSE</strong></summary>
 
   bash
-  sudo zypper install git
+  **sudo zypper install git**
   
 </details>
 
@@ -57,22 +58,22 @@ You need Git to clone the repository. Follow the instructions below based on you
   <summary><strong>macOS</strong></summary>
 
   bash
-  brew install git
+  **brew install git**
   
 </details>
 
 <details>
   <summary><strong>Windows</strong></summary>
 
-  Download and install Git from the [official website](https://git-scm.com/download/win).
+  **Download and install Git from the [official website](https://git-scm.com/download/win).**
 
 </details>
 
 ### 2. Clone the Repository and Run the Script
 
 
-git clone https://github.com/arijarman/insta-message-sorter
-cd insta-message-sorter
+- **git clone https://github.com/arijarman/insta-message-sorter**
+- **cd insta-message-sorter**
 
 
 ### 3. Install Required Python Packages
@@ -80,7 +81,7 @@ cd insta-message-sorter
 Ensure you have `BeautifulSoup` installed:
 
 
-pip install beautifulsoup4
+**pip install beautifulsoup4**
 
 
 ### 4. Run the Script
@@ -88,7 +89,9 @@ pip install beautifulsoup4
 Make sure to keep the `messages.html` file in the same directory as `main.py`:
 
 
-python main.py
+**python main.py**
+or
+**python parting_html.py**
 
 
 ### 📥 Alternative Method: Manual Download
