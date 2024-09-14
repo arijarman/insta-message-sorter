@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 import os
 
+# just add macos like theme
 # Function to adjust the timezone from Alaska to IST
 def convert_to_ist(alaska_time_str):
     alaska_time = datetime.strptime(alaska_time_str, "%b %d, %Y, %I:%M %p")
