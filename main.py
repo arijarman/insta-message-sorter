@@ -44,7 +44,7 @@ def parse_html_files(file_paths):
     messages.reverse()
     return messages
 
-# Generate love-themed HTML content
+# Generate enhanced HTML content
 def generate_html(messages, left_sender, right_sender):
     html_content = """
     <!DOCTYPE html>
@@ -52,28 +52,37 @@ def generate_html(messages, left_sender, right_sender):
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Love Themed Instagram Chat</title>
+        <title>Enhanced Love-Themed Instagram Chat</title>
         <style>
             body { 
-                font-family: Arial, sans-serif; 
-                background-color: #f2f2f2; 
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+                background: linear-gradient(to right, #74ebd5, #ACB6E5); /* macOS Big Sur-like gradient */
                 padding: 20px; 
                 margin: 0; 
-                overflow-x: hidden; /* Prevent horizontal scrolling */
+                display: flex;
+		overflow-x: hidden; /* Prevent horizontal scrolling */
+                justify-content: center;
             }
             .chat-container { 
                 max-width: 600px; 
-                margin: auto; 
-                overflow-wrap: break-word; /* Break long words to prevent overflow */
-                word-wrap: break-word;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.8); 
+                border-radius: 20px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                backdrop-filter: blur(10px); /* Slight blur for a modern feel */
+                position: relative;
             }
             .message { 
-                margin: 10px 0; 
-                padding: 10px; 
+                margin: 15px 0; 
+                padding: 12px; 
                 border-radius: 15px; 
-                width: fit-content; 
-                max-width: 100%; /* Ensure messages do not exceed container width */
-                box-sizing: border-box; /* Include padding and border in width calculation */
+                max-width: 80%; /* Ensure messages don't exceed this width */
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Depth with shadow */
+                transition: background-color 0.3s ease;
+            }
+            .message:hover {
+                background-color: rgba(255, 255, 255, 0.9); /* Hover effect */
             }
             .left-sender { 
                 background-color: #d3e5ff; 
@@ -91,7 +100,13 @@ def generate_html(messages, left_sender, right_sender):
             }
             .time { 
                 font-size: 10px; 
-                color: gray; 
+                color: gray;
+                margin-top: 5px; /* Better spacing for the timestamp */
+                display: block;
+            }
+            .emoji {
+                font-size: 18px; /* Make emojis more prominent */
+                margin-right: 5px;
             }
             .reaction { 
                 margin-top: 5px; 
@@ -100,8 +115,9 @@ def generate_html(messages, left_sender, right_sender):
             }
             .image, .video { 
                 max-width: 100%; /* Ensure images and videos fit within the message bubble */
-                height: auto; 
-                margin-top: 5px; 
+                height: auto;
+                margin-top: 10px;
+                border-radius: 10px;
             }
         </style>
     </head>
@@ -115,7 +131,7 @@ def generate_html(messages, left_sender, right_sender):
         
         html_content += f"""
         <div class="message {sender_class}">
-            <strong>{message['sender']}</strong><br>
+            <span class="emoji">😊</span><strong>{message['sender']}</strong><br>
             {message['message']}<br>
             <span class="time">{message['timestamp']}</span>
         """
@@ -166,7 +182,7 @@ if __name__ == "__main__":
     final_html_content = generate_html(all_messages, left_sender, right_sender)
 
     # Save the HTML content to a new file
-    with open('love_theme_chat.html', 'w', encoding='utf-8') as output_file:
+    with open('enhanced_love_theme_chat.html', 'w', encoding='utf-8') as output_file:
         output_file.write(final_html_content)
 
-    print("Love-themed Instagram chat generated successfully as 'love_theme_chat.html'.")
+    print("Enhanced love-themed Instagram chat generated successfully as 'enhanced_love_theme_chat.html'.")
