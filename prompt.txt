@@ -1,0 +1,339 @@
+You are an expert Python developer. Your task is to generate a COMPLETE, SINGLE-FILE Python script that is structurally, logically, and functionally identical to a previously built Instagram chat parser tool.
+
+⚠️ STRICT RULES:
+
+* DO NOT refactor, simplify, rename variables, or change structure.
+* DO NOT reorganize functions.
+* DO NOT optimize or “improve” anything unless explicitly required.
+* Maintain the SAME logical flow, SAME function names, and SAME behavior.
+* Preserve formatting style (spacing, indentation, triple-quoted HTML string usage).
+* Output ONLY the Python code. No explanations.
+
+---
+
+# 🧠 CORE PURPOSE
+
+Build a Python script that:
+
+* Parses Instagram exported HTML chat files (`messages*.html`)
+* Converts timestamps from Alaska timezone → system local timezone
+* Generates styled chat UI HTML files
+* Maintains multi-file separation (1 input → 1 output)
+* Includes navigation and month grouping
+* Uses embedded HTML + CSS inside Python
+
+---
+
+# 📂 FILE HANDLING LOGIC
+
+* Read ALL `.html` files from current working directory:
+
+  ```python
+  INPUT_FOLDER = os.getcwd()
+  OUTPUT_FOLDER = os.getcwd()
+  ```
+
+* DO NOT move or modify original HTML files
+
+* For N input files → generate N outputs:
+
+  ```
+  chat_1.html
+  chat_2.html
+  ...
+  ```
+
+* Maintain sorted order of files
+
+---
+
+# 🧾 HTML PARSING STRUCTURE (VERY IMPORTANT)
+
+Use BeautifulSoup with EXACT extraction pattern:
+
+```python
+blocks = soup.find_all("div", class_="pam")
+sender = block.find("h2").text.strip()
+message = block.find("div", class_="_a6-p").get_text("\n", strip=True)
+raw_time = block.find("div", class_="_a6-o").text.strip()
+```
+
+* Skip broken blocks using try/except
+* DO NOT crash on malformed HTML
+
+---
+
+# 🌍 TIMEZONE + TIME FORMAT (CRITICAL BUG FIX)
+
+Input timezone:
+
+```python
+ALASKA_TZ = pytz.timezone("US/Alaska")
+```
+
+Conversion:
+
+```python
+dt = ALASKA_TZ.localize(dt).astimezone(LOCAL_TZ)
+```
+
+⚠️ DO NOT REMOVE THIS
+
+---
+
+# ⛔ CRITICAL TIME BUG (FIXED)
+
+Previous mistake:
+
+* Time was rounded to hours (e.g., 5 PM ❌)
+
+Correct implementation MUST be:
+
+```python
+def format_time(dt):
+    return dt.strftime("%I:%M %p").lstrip("0").lower()
+```
+
+✔ Must include minutes
+✔ Output example: `4:02 pm`
+✔ NOT `4 pm`
+
+---
+
+# 📅 DATE FORMAT
+
+```python
+def format_date(dt):
+    return dt.strftime("%d %b %Y")
+```
+
+Example:
+
+```
+12 Aug 2025
+```
+
+---
+
+# 📆 MONTH GROUPING (WHATSAPP STYLE)
+
+Insert separator when month changes:
+
+Logic:
+
+```python
+if current_month != last_month:
+```
+
+HTML:
+
+```html
+<div class="separator">— Aug 2024 —</div>
+```
+
+---
+
+# 👤 USER INTERACTION (MANDATORY)
+
+Before generating output:
+
+1. Collect all messages
+2. Extract unique participants:
+
+```python
+def get_participants(messages):
+    return list(set(msg["sender"] for msg in messages))
+```
+
+3. Display numbered list
+4. Ask user:
+
+```
+Enter who should be on RIGHT side:
+```
+
+5. Use selection:
+
+```python
+is_right = msg["sender"] == right_user
+```
+
+---
+
+# 💬 CHAT UI STRUCTURE (STRICT)
+
+Each message MUST be:
+
+```html
+<div class="msg right">
+    <div class="name">Sender</div>
+    <div class="text">Message</div>
+    <div class="meta">4:02 pm • 12 Aug 2025</div>
+</div>
+```
+
+Hierarchy:
+
+1. Name (bold)
+2. Message
+3. Time + Date (small, faded)
+
+---
+
+# 🎨 CSS REQUIREMENTS (ALL MUST EXIST)
+
+## Prevent horizontal scrollbar (CRITICAL BUG FIX)
+
+```css
+body {
+    overflow-x: hidden;
+}
+```
+
+## Fix layout overflow
+
+```css
+.chat {
+    box-sizing: border-box;
+}
+```
+
+## Prevent long text overflow
+
+```css
+.msg {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+```
+
+---
+
+# 🎯 LAYOUT RULES
+
+* Chat centered:
+
+```css
+.chat {
+    max-width: 700px;
+    margin: auto;
+}
+```
+
+* Bubble width:
+
+```css
+max-width: 75%;
+```
+
+* Right alignment:
+
+```css
+.right {
+    margin-left: auto;
+}
+```
+
+---
+
+# 🎨 COLOR SYSTEM
+
+Left bubble:
+
+```css
+background: #262626;
+color: #ffffff;
+```
+
+Right bubble:
+
+```css
+background: #0084ff;
+color: #ffffff;
+```
+
+Meta text:
+
+```css
+opacity: 0.7;
+font-size: 11px;
+```
+
+---
+
+# 🔁 NAVIGATION SYSTEM
+
+Each output file must include:
+
+```html
+<a href="chat_1.html">⬅ Previous</a>
+<a href="chat_2.html">Next ➡</a>
+```
+
+Logic:
+
+```python
+if index > 1:
+if index < total_files:
+```
+
+---
+
+# 📱 RESPONSIVENESS
+
+Include:
+
+```css
+@media (max-width: 768px) {
+    .msg {
+        max-width: 90%;
+    }
+}
+```
+
+---
+
+# ⚠️ DO NOT BREAK THESE
+
+* ❌ Do NOT merge HTML files
+* ❌ Do NOT round time
+* ❌ Do NOT remove timezone conversion
+* ❌ Do NOT create horizontal scrollbar
+* ❌ Do NOT change alignment logic
+* ❌ Do NOT externalize CSS (must stay inside Python string)
+
+---
+
+# 🧱 REQUIRED FUNCTION STRUCTURE
+
+Must include EXACT functions:
+
+* `parse_html(file_path)`
+* `format_time(dt)`
+* `format_date(dt)`
+* `format_month(dt)`
+* `get_participants(messages)`
+* `generate_html(messages, index, total_files, right_user)`
+* `main()`
+
+---
+
+# 🧾 OUTPUT RULE
+
+* Return ONLY Python code
+* No markdown
+* No explanations
+* No comments outside code
+
+---
+
+# 🧠 FINAL DIRECTIVE
+
+Reconstruct a deterministic, production-stable Instagram chat parser that:
+
+* embeds HTML + CSS inside Python
+* handles multi-file input/output
+* fixes all known UI and time bugs
+* preserves structure and logic exactly as described
+
+Any deviation is NOT allowed.
